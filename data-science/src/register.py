@@ -43,7 +43,10 @@ def main(args):
     )
     # Step 4: Write model registration details, including model name and version, into a JSON file in the specified output path.  
     print("Writing JSON")
-    model_info = {"id": f}
+    model_info = {"id": f"{args.model_name}:{model_version}"}
+    output_path = os.path.join(args.model_info_output_path,"model_info.json")
+    with open(output_path, "w") as of:
+        json.dump(model_info, of)
 
 if __name__ == "__main__":
     
@@ -53,9 +56,9 @@ if __name__ == "__main__":
     args = parse_args()
     
     lines = [
-        f"Model name: {args.________}",
-        f"Model path: {args.________}",
-        f"Model info output path: {args.________}"
+        f"Model name: {args.model_name}",
+        f"Model path: {args.model_path}",
+        f"Model info output path: {args.model_info_output_path}"
     ]
 
     for line in lines:
