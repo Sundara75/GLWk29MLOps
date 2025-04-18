@@ -15,7 +15,7 @@ import mlflow
 def parse_args():
     '''Parse input arguments'''
 
-    parser = argparse.ArgumentParser()  # Create an ArgumentParser object
+    parser = argparse.ArgumentParser("prep")  # Create an ArgumentParser object
     parser.add_argument("--raw_data", type=str, help="Path to raw data")  # Specify the type for raw data (str)
     parser.add_argument("--train_data", type=str, help="Path to train dataset")  # Specify the type for train data (str)
     parser.add_argument("--test_data", type=str, help="Path to test dataset")  # Specify the type for test data (str)
@@ -30,7 +30,6 @@ def main(args):  # Write the function name for the main data preparation logic
     # Reading Data
     df = pd.read_csv(args.raw_data)
 
-    # ------- WRITE YOUR CODE HERE -------
     # Step 1: Perform label encoding to convert categorical features into numerical values for model compatibility. 
     # Encoding the categorical 'Type' column
     label_encoder = LabelEncoder()
@@ -55,13 +54,13 @@ if __name__ == "__main__":
     mlflow.start_run()
 
     # Parse Arguments
-    args = _______()  # Call the function to parse arguments
+    args = parse_args()  # Call the function to parse arguments
 
     lines = [
-        f"Raw data path: {args._______}",  # Print the raw_data path
-        f"Train dataset output path: {args._______}",  # Print the train_data path
-        f"Test dataset path: {args._______}",  # Print the test_data path
-        f"Test-train ratio: {args._______}",  # Print the test_train_ratio
+        f"Raw data path: {args.raw.data}",  # Print the raw_data path
+        f"Train dataset output path: {args.train_data}",  # Print the train_data path
+        f"Test dataset path: {args.test_data}",  # Print the test_data path
+        f"Test-train ratio: {args.test_train_ratio}",  # Print the test_train_ratio
     ]
 
     for line in lines:
