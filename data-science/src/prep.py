@@ -30,7 +30,7 @@ def main(args):  # Write the function name for the main data preparation logic
     # Reading Data
     df = pd.read_csv(args.raw_data)
 
-    # Step 1: Perform label encoding to convert categorical features into numerical values for model compatibility. 
+    # Step 1: Perform label encoding to convert categorical features into numerical values for model compatibility. Comment pushed on 20-04
     # Encoding the categorical 'Type' column
     label_encoder = LabelEncoder()
     df['Segment'] = label_encoder.fit_transform(df['Segment'])
