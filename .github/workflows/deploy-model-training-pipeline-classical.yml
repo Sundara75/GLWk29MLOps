@@ -25,6 +25,11 @@ jobs:
       max_instances: 1          # This is the maximum number of instances for your compute cluster
       cluster_tier: dedicated  # This is the tier for your compute cluster (e.g., dedicated)
       
+      #Service Principal: Uses client ID, tenant ID, client secret/certificate
+      #client-id: 
+      #tenant-id: 
+      #subscription-id:   
+      
       resource_group: ${{ needs.get-config.outputs.resource_group }}
       workspace_name: ${{ needs.get-config.outputs.aml_workspace }}     
     secrets:
@@ -41,6 +46,11 @@ jobs:
       max_instances: 1          # This is the maximum number of instances for your compute cluster
       cluster_tier: dedicated  # This is the tier for your compute cluster (e.g., dedicated)
       
+      #Service Principal: Uses client ID, tenant ID, client secret/certificate
+      #client-id: 
+      #tenant-id: 
+      #subscription-id:
+      
       resource_group: ${{ needs.get-config.outputs.resource_group }}
       workspace_name: ${{ needs.get-config.outputs.aml_workspace }}
       name: used-cars-data
@@ -52,6 +62,12 @@ jobs:
     needs: get-config
     uses: Azure/mlops-templates/.github/workflows/register-environment.yml@main
     with:
+
+      #Service Principal: Uses client ID, tenant ID, client secret/certificate
+      #client-id: 
+      #tenant-id: 
+      #subscription-id:
+      
       resource_group: ${{ needs.get-config.outputs.resource_group }}
       workspace_name: ${{ needs.get-config.outputs.aml_workspace }}
       environment_file:  mlops/azureml/train/train-env.yml
@@ -63,6 +79,12 @@ jobs:
     needs: [get-config, register-environment, create-compute, register-dataset]
     uses: Azure/mlops-templates/.github/workflows/run-pipeline.yml@main
     with:
+
+      #Service Principal: Uses client ID, tenant ID, client secret/certificate
+      #client-id: 
+      #tenant-id: 
+      #subscription-id:
+      
       resource_group: ${{ needs.get-config.outputs.resource_group }}
       workspace_name: ${{ needs.get-config.outputs.aml_workspace }}
       parameters-file:  mlops/azureml/train/newpipeline.yml
